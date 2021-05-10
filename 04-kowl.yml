@@ -1,0 +1,19 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: kowl
+  namespace: kafka
+spec:
+  helmVersion: v3
+  releaseName: kowl
+  chart:
+    repository: https://raw.githubusercontent.com/cloudhut/charts/master/archives
+    name: kowl
+    version: 1.2.0
+  values:
+    kowl:
+      # See reference config: https://github.com/cloudhut/kowl/blob/master/docs/config/kowl.yaml)
+      config:
+        kafka:
+          brokers:
+            - my-cluster-kafka-bootstrap:9092
